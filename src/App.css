@@ -1,0 +1,248 @@
+/* ========================================
+   BASE
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Inter, Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ========================================
+   LIGHT MODE
+======================================== */
+
+.app.light {
+  /* Page and surfaces */
+  --color-background: #f5f7fa;
+  --color-background-subtle: #eef1f7;
+
+  --color-surface: #ffffff;
+  --color-surface-secondary: #e6eaf2;
+  --color-surface-hover: #dce3ee;
+  --color-surface-active: #c4cddf;
+
+  /* Text and icons */
+  --color-text-primary: #0b0f19;
+  --color-text-secondary: #2e364d;
+  --color-text-muted: #5d677d;
+  --color-text-disabled: #8892a6;
+  --color-text-inverse: #ffffff;
+
+  --color-icon-primary: #232a3d;
+  --color-icon-secondary: #5d677d;
+  --color-icon-disabled: #8892a6;
+
+  /* Borders */
+  --color-border: #d5dbe6;
+  --color-border-strong: #b4bdd1;
+  --color-border-focus: #5b7cfa;
+
+  /* Primary action */
+  --color-primary: #5b7cfa;
+  --color-primary-hover: #4f6ee3;
+  --color-primary-active: #3f5bca;
+  --color-primary-text: #ffffff;
+
+  /* Secondary action */
+  --color-secondary: #eef1f7;
+  --color-secondary-hover: #dce3ee;
+  --color-secondary-active: #c4cddf;
+  --color-secondary-text: #232a3d;
+
+  /* Status */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Shadows */
+  --shadow-small: 0 2px 6px rgb(0 0 0 / 6%);
+  --shadow-medium: 0 8px 24px rgb(0 0 0 / 10%);
+  --shadow-large: 0 20px 60px rgb(0 0 0 / 15%);
+}
+
+/* ========================================
+   DARK MODE
+======================================== */
+
+.app.dark {
+  /* Page and surfaces */
+  --color-background: #0b0f19;
+  --color-background-subtle: #121826;
+
+  --color-surface: #121826;
+  --color-surface-secondary: #1a2132;
+  --color-surface-hover: #232a3d;
+  --color-surface-active: #2e364d;
+
+  /* Text and icons */
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-disabled: #64748b;
+  --color-text-inverse: #0b0f19;
+
+  --color-icon-primary: #f1f5f9;
+  --color-icon-secondary: #94a3b8;
+  --color-icon-disabled: #64748b;
+
+  /* Borders */
+  --color-border: #334155;
+  --color-border-strong: #475569;
+  --color-border-focus: #7aa2ff;
+
+  /* Primary action */
+  --color-primary: #5b7cfa;
+  --color-primary-hover: #7aa2ff;
+  --color-primary-active: #4f6ee3;
+  --color-primary-text: #ffffff;
+
+  /* Secondary action */
+  --color-secondary: #232a3d;
+  --color-secondary-hover: #2e364d;
+  --color-secondary-active: #334155;
+  --color-secondary-text: #f1f5f9;
+
+  /* Status */
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+
+  /* Shadows */
+  --shadow-small: 0 2px 6px rgb(0 0 0 / 20%);
+  --shadow-medium: 0 8px 24px rgb(0 0 0 / 30%);
+  --shadow-large: 0 20px 60px rgb(0 0 0 / 45%);
+}
+
+/* ========================================
+   APPLICATION
+======================================== */
+
+.app {
+  min-height: 100vh;
+
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  padding: 1rem;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+/* ========================================
+   PRIMARY BUTTON
+======================================== */
+
+.button-primary {
+  padding: 10px 16px;
+
+  font-weight: 600;
+
+  color: var(--color-primary-text);
+  background: var(--color-primary);
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+  margin: 0.2rem;
+}
+
+.button-primary:hover {
+  background: var(--color-primary-hover);
+}
+
+.button-primary:active {
+  background: var(--color-primary-active);
+}
+
+.button-primary:focus-visible {
+  outline: 3px solid
+    color-mix(in srgb, var(--color-border-focus) 30%, transparent);
+
+  outline-offset: 2px;
+}
+
+.button-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   SECONDARY BUTTON
+======================================== */
+
+.button-secondary {
+  padding: 10px 16px;
+
+  font-weight: 600;
+
+  color: var(--color-secondary-text);
+  background: var(--color-secondary);
+
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.button-secondary:hover {
+  background: var(--color-secondary-hover);
+  border-color: var(--color-border-strong);
+}
+
+.button-secondary:active {
+  background: var(--color-secondary-active);
+}
+
+/* ========================================
+   GHOST BUTTON
+======================================== */
+
+.button-ghost {
+  padding: 10px 16px;
+
+  color: var(--color-text-secondary);
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.button-ghost:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface-hover);
+}
+
+.card {
+  width: 100px;
+  /* height: 3rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  font-size: 2rem;
+  box-shadow: var(--shadow-large);
+  margin: 1rem;
+  background: var(--color-background);
+}
