@@ -1,8 +1,14 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { CountContext } from "../../context/Context";
 
 const Counter = () => {
   const { count, countDispatch } = useContext(CountContext)!;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleClick = () => {
+    inputRef.current?.focus();
+  };
+
   return (
     <>
       <div className="card">{count}</div>
@@ -15,7 +21,7 @@ const Counter = () => {
       </button>
       <button
         className="button-primary"
-        onClick={() => countDispatch({ type: "DECREMENT", payload: 10 })}
+        onClick={() => countDispatch({ type: "DECREMENT", payload: 1 })}
       >
         Decrement
       </button>
@@ -25,6 +31,9 @@ const Counter = () => {
       >
         Reset
       </button>
+      <hr />
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>Fucus Input</button>
     </>
   );
 };

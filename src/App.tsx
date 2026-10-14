@@ -4,6 +4,7 @@ import Counter from "./components/Counter/Counter";
 import Theme from "./components/ThemeToggle/Theme";
 import { ThemeContext } from "./context/Context";
 import { CounterProvider } from "./components/Counter/CounterProvider";
+import Timer from "./components/Timer/Timer";
 
 const App = () => {
   const { theme } = useContext(ThemeContext)!;
@@ -15,6 +16,7 @@ const App = () => {
       </CounterProvider>
 
       <hr />
+      <Timer />
     </div>
   );
 };
