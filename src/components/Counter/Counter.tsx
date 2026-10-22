@@ -1,13 +1,8 @@
-import { useContext, useRef } from "react";
+import { useContext } from "react";
 import { CountContext } from "../../context/Context";
 
 const Counter = () => {
   const { count, countDispatch } = useContext(CountContext)!;
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleClick = () => {
-    inputRef.current?.focus();
-  };
 
   return (
     <>
@@ -32,8 +27,6 @@ const Counter = () => {
         Reset
       </button>
       <hr />
-      <input type="text" ref={inputRef} />
-      <button onClick={handleClick}>Fucus Input</button>
     </>
   );
 };

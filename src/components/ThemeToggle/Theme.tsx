@@ -7,12 +7,18 @@ const Theme = () => {
   const { theme, themeDispatch } = context;
   return (
     <>
-      <button
-        className="button-primary"
-        onClick={() => themeDispatch({ type: "TOGGLE_THEME" })}
-      >
-        {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
-      </button>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <button
+          className="button-primary"
+          onClick={() => themeDispatch({ type: "TOGGLE_THEME" })}
+          style={{
+            float: "right",
+            margin: "2rem",
+          }}
+        >
+          {theme === "light" ? "🌙 Dark Mode" : "☀️ Light Mode"}
+        </button>
+      </div>
     </>
   );
 };
