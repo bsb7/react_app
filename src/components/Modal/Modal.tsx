@@ -1,50 +1,46 @@
 import { createPortal } from "react-dom";
+import "./Modal.css";
+import { useEffect } from "react";
+const Modal = ({ isOpen, onClose, children, title, type, onConfirm }) => {
+  const modalRoot = document.getElementById("modal-root");
+  // useEffect code below allow escape to close modal
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
 
-function Modal({ open, children, onClose }) {
-  if (!open) return null;
-  const DIV_STYLE = {
-    width: "500px",
-    padding: "2rem",
-    display: "flex",
-    flexDirection: "column",
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "#fff",
-    zIndex: 1000,
-    border: "1px solid gray",
-  };
-  const OVERLAY_STYLES = {
-    position: "fixed",
-    top: "0",
-    bottom: "0",
-    left: "0",
-    right: "0",
-    backgroundColor: "rgba(0,0,0, .5)",
-    zIndex: "1000",
-  };
+  // code below disable background scrolling
+  useEffect(() => {
+    if (!isOpen) return;
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+  if (!modalRoot) return null;
+
   return createPortal(
-    <div style={OVERLAY_STYLES}>
-      <div style={DIV_STYLE}>
-        <button
-          onClick={onClose}
-          style={{
-            marginBottom: "1rem",
-            padding: "1rem",
-            border: "none",
-            borderRadius: "1.3rem",
-            outline: "none",
-            boxShadow: "none",
-          }}
-        >
-          Close Modal
-        </button>
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <h1>{title}</h1>
         {children}
+        <button onClick={onClose}>Close</button>
       </div>
     </div>,
-    document.body,
+    modalRoot,
   );
-}
+};
 
 export default Modal;
