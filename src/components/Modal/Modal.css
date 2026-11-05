@@ -1,0 +1,20 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgb(0 0 0 / 50%);
+}
+
+.modal-content {
+  width: min(90%, 450px);
+  padding: 24px;
+  border-radius: 12px;
+
+  background: white;
+  color: #222;
+}
